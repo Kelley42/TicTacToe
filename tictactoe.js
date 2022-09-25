@@ -1,34 +1,49 @@
-function Player(name, marker) {
-    this.name = name;
-    this.marker = marker;
-}
-
-Player.prototype.info = function() {
-    console.log(this.name, this.marker);
-}
-
-const player1 = new Player("player 1", "X");
-const player2 = new Player("player 2", "O");
-
-function makeClickable() {
-    for (let i = 0; i < square.length; i++) {
-        square[i].addEventListener("click", () => {
-            if (square[i].innerHTML == "") {
-                square[i].innerHTML = "X";
-            }
-        });
-        // if (square[i].innerHTML == "") { // If box has not been taken yet
-        //     square[i].innerHTML = "X";
-        //     square[i].addEventListener("click", changeToFavColor);
-        //     break;
-        // }
+const Player = (name, marker) => {
+    return {
+        name, 
+        marker,
     }
 }
 
+// Player.prototype.info = function() {
+//     return(`${this.name} with ${this.marker}`);
+// }
 
-const gameBoard = document.querySelector("#game-container");
+const player1 = Player("Player 1", "X");
+const player2 = Player("Player 2", "O");
+
+const gameBoard = (() => {
+    const makeClickable = () => {
+        for (let i = 0; i < square.length; i++) {
+            square[i].addEventListener("click", () => {
+                if (square[i].innerHTML == "") {
+                    square[i].innerHTML = "X";
+                }
+            });
+        }
+    };
+    return {makeClickable};
+})();
+
+// const gamePlay = (() => {
+
+// });
+
+// function makeClickable() {
+//     for (let i = 0; i < square.length; i++) {
+//         square[i].addEventListener("click", () => {
+//             if (square[i].innerHTML == "") {
+//                 square[i].innerHTML = "X";
+//             }
+//         });
+//     }
+// };
+
+
+const gameContainer = document.querySelector("#game-container");
 const square = document.getElementsByClassName("square");
-makeClickable();
+
+gameBoard.makeClickable()
 
 // Gameboard as array inside gameboard object
 // Players stored in objects
