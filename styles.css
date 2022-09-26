@@ -33,6 +33,11 @@ main {
     border: solid green;
 }
 
+header,
+footer {
+    font-size: 40px;
+}
+
 #game-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

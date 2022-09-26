@@ -13,35 +13,37 @@ const player1 = Player("Player 1", "X");
 const player2 = Player("Player 2", "O");
 
 const gameBoard = (() => {
-    let clickCount = 0;
     const makeClickable = () => {
+        let clickCount = 0;
         for (let i = 0; i < square.length; i++) {
             square[i].addEventListener("click", () => {
                 if (square[i].innerHTML == "") {
                     square[i].innerHTML = "X";
                     clickCount += 1;
+                    if (clickCount == 9) {
+                        console.log("game over")
+                    }
                 }
             });
         }
     };
-    return {clickCount, makeClickable};
+    return {makeClickable};
 })();
 
-const gamePlay = (() => {
-    const endGame = () => {
-        if (gameBoard.clickCount == 9) {
-            console.log("game over")
-        }
-    };
-    return {endGame};
-})();
+// const gamePlay = (() => {
+//     const endGame = () => {
+//         if (gameBoard.clickCount == 9) {
+//             console.log("game over")
+//         }
+//     };
+//     return {endGame};
+// })();
 
 
 const gameContainer = document.querySelector("#game-container");
 const square = document.getElementsByClassName("square");
 
 gameBoard.makeClickable()
-gamePlay.endGame()
 
 // Gameboard as array inside gameboard object
 // Players stored in objects
