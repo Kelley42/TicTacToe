@@ -18,7 +18,11 @@ const gameBoard = (() => {
         for (let i = 0; i < square.length; i++) {
             square[i].addEventListener("click", () => {
                 if (square[i].innerHTML == "") {
-                    square[i].innerHTML = "X";
+                    if (clickCount % 2 == 0) {
+                        square[i].innerHTML = "X";
+                    } else {
+                        square[i].innerHTML = "O";
+                    }
                     clickCount += 1;
                     if (clickCount == 9) {
                         console.log("game over")
