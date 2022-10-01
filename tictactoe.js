@@ -19,6 +19,7 @@ const gameBoard = (() => {
     const winner_announcement = document.querySelector("#winner-announcement"); 
     const showWinner = () => {
         winner_box.style.display = "block";
+        winner_announcement.style.fontSize = `${480 / winner_announcement.innerHTML.length}px`;
     };
     const hideWinner = () => {
         winner_box.style.display = "none";
