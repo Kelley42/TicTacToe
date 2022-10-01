@@ -22,6 +22,7 @@ body {
     width: min(100%, 500px);
     height: min(100%, 500px);
     border: solid red;
+    position: relative;
 }
 
 main {
@@ -36,6 +37,21 @@ main {
 header,
 footer {
     font-size: 40px;
+}
+
+#winner-box {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+}
+
+#winner-announcement {
+    font-size: 40px;
+    position: absolute;
+    background-color: white;
+    border: solid black;
+    width: 100%;
+    height: 100%;
 }
 
 #game-container {

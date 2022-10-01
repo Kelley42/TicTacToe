@@ -15,6 +15,15 @@ const player2 = Player("Player 2", "O", "loser");
 const players = [player1, player2];
 
 const gameBoard = (() => {
+    const winner_box = document.querySelector("#winner-box");
+    const winner_announcement = document.querySelector("#winner-announcement"); 
+    const showWinner = () => {
+        winner_box.style.display = "block";
+    };
+    const hideWinner = () => {
+        winner_box.style.display = "none";
+    };
+    hideWinner;
     let game_on;
     let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
     const makeClickable = () => {
@@ -56,8 +65,8 @@ const gameBoard = (() => {
                     if (game_on == false) {
                         for (const element in players) {
                             if (players[element].status == "winner") {
-                                console.log("game over");
-                                console.log(`${players[element].name} wins`);
+                                winner_announcement.innerHTML = `${players[element].name} wins`;
+                                showWinner();
                             }
                         }
                     }
@@ -83,12 +92,15 @@ const gameBoard = (() => {
                     
                 // }
                 if (clickCount == 9 && game_on == true) {
-                    console.log("tie")
+                    winner_announcement.innerHTML = "tie";
+                    showWinner;
                 }
             });
         }
     };
     const restartGame = () => {
+        hideWinner();
+        winner_announcement.innerHTML = "";
         game_on = true;
         array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
         for (let i = 0; i < square.length; i++) {
@@ -99,8 +111,8 @@ const gameBoard = (() => {
                 players[element].status == "loser"
             }
         }
-    }
-    return {makeClickable, restartGame};
+    };
+    return {makeClickable, restartGame, showWinner, hideWinner};
 })();
 
 // const gamePlay = (() => {
@@ -121,6 +133,8 @@ const square = document.getElementsByClassName("square");
 const restart = document.querySelector("#restart");
 restart.addEventListener("click", gameBoard.restartGame);
 
+
+gameBoard.hideWinner();
 gameBoard.makeClickable();
 // gamePlay.endGame();
 
