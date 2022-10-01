@@ -1,7 +1,8 @@
-const Player = (name, marker) => {
+const Player = (name, marker, status) => {
     return {
         name, 
         marker,
+        status
     }
 }
 
@@ -9,34 +10,22 @@ const Player = (name, marker) => {
 //     return(`${this.name} with ${this.marker}`);
 // }
 
-const player1 = Player("Player 1", "X");
-const player2 = Player("Player 2", "O");
+const player1 = Player("Player 1", "X", "loser");
+const player2 = Player("Player 2", "O", "loser");
+const players = [player1, player2];
 
 const gameBoard = (() => {
     const makeClickable = () => {
         let clickCount = 0;
         const x_array = "XXX";
         const o_array = "OOO";
-        const boardArray = [];
-        const arraytop = ["0", "3", "6"];
-        let allarrays = [];
-        let array012 = [square[0].id, square[1].id, square[2].id];
-        let array345 = [square[3].id, square[4].id, square[5].id];
+        // const boardArray = [];
+        // const arraytop = ["0", "3", "6"];
+        // let allarrays = [];
+        // let array012 = [square[0].id, square[1].id, square[2].id];
+        // let array345 = [square[3].id, square[4].id, square[5].id];
         let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
         let game_on = true;
-        // Winning combos
-        // function winningCombos() {
-        //     console.log("hihi")
-        //     let array012 = [boardArray[0], boardArray[1], boardArray[2]];
-        //     let array345 = [boardArray[3], boardArray[4], boardArray[5]];
-        //     let array678 = [boardArray[6], boardArray[7], boardArray[8]];
-        //     let array036 = [boardArray[0], boardArray[3], boardArray[6]];
-        //     let array147 = [boardArray[1], boardArray[4], boardArray[7]];
-        //     let array258 = [boardArray[2], boardArray[5], boardArray[8]];
-        //     let array048 = [boardArray[0], boardArray[4], boardArray[8]];
-        //     let array246 = [boardArray[2], boardArray[4], boardArray[6]];
-        //     let allarrays = [array012, array345, array678, array036, array147, array258, array048, array246]
-        // };
         for (let i = 0; i < square.length; i++) {
             square[i].addEventListener("click", () => {
                 if (square[i].innerHTML == "") {
@@ -47,16 +36,16 @@ const gameBoard = (() => {
                     }
                     clickCount += 1;
                     // Push square id and either X or O to boardArray
-                    boardArray.push({[square[i].id] : square[i].innerHTML});
+                    // boardArray.push({[square[i].id] : square[i].innerHTML});
                     for (const element in array_change) {
                         // Replace winning combos with X or O
                         array_change[element][0] = array_change[element][0].replace(square[i].id, square[i].innerHTML);
                         if (array_change[element][0] == x_array) {
-                            console.log("X wins!");
+                            player1.status = "winner";
                             game_on = false;
                             break;
                         } else if (array_change[element][0] == o_array) {
-                            console.log("O wins!")
+                            player2.status = "winner";
                             game_on = false;
                             break;
                         } else {
@@ -64,7 +53,12 @@ const gameBoard = (() => {
                         }
                     }
                     if (game_on == false) {
-                        console.log("game over");
+                        for (const element in players) {
+                            if (players[element].status == "winner") {
+                                console.log("game over");
+                                console.log(`${players[element].name} wins`);
+                            }
+                        }
                     }
                 }
                 //console.log(array_change)
