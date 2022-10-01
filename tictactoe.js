@@ -15,6 +15,8 @@ const player2 = Player("Player 2", "O", "loser");
 const players = [player1, player2];
 
 const gameBoard = (() => {
+    let game_on;
+    let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
     const makeClickable = () => {
         let clickCount = 0;
         const x_array = "XXX";
@@ -24,8 +26,7 @@ const gameBoard = (() => {
         // let allarrays = [];
         // let array012 = [square[0].id, square[1].id, square[2].id];
         // let array345 = [square[3].id, square[4].id, square[5].id];
-        let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
-        let game_on = true;
+        game_on = true;
         for (let i = 0; i < square.length; i++) {
             square[i].addEventListener("click", () => {
                 if (square[i].innerHTML == "" && game_on == true) {
@@ -62,7 +63,7 @@ const gameBoard = (() => {
                     }
                 }
                 //console.log(array_change)
-                if (clickCount >= 5) {
+                // if (clickCount >= 5) {
                     // console.log(Object.values(boardArray))
                     // console.log(Object.entries(boardArray))
                     // console.log(boardArray["0"]["1"])
@@ -80,14 +81,26 @@ const gameBoard = (() => {
                     //     }
                     // }
                     
-                }
+                // }
                 if (clickCount == 9 && game_on == true) {
                     console.log("tie")
                 }
             });
         }
     };
-    return {makeClickable};
+    const restartGame = () => {
+        game_on = true;
+        array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
+        for (let i = 0; i < square.length; i++) {
+            square[i].innerHTML = "";
+        }
+        for (const element in players) {
+            if (players[element].status == "winner") {
+                players[element].status == "loser"
+            }
+        }
+    }
+    return {makeClickable, restartGame};
 })();
 
 // const gamePlay = (() => {
@@ -105,6 +118,8 @@ const gameBoard = (() => {
 
 const gameContainer = document.querySelector("#game-container");
 const square = document.getElementsByClassName("square");
+const restart = document.querySelector("#restart");
+restart.addEventListener("click", gameBoard.restartGame);
 
 gameBoard.makeClickable();
 // gamePlay.endGame();
