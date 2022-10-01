@@ -28,7 +28,7 @@ const gameBoard = (() => {
         let game_on = true;
         for (let i = 0; i < square.length; i++) {
             square[i].addEventListener("click", () => {
-                if (square[i].innerHTML == "") {
+                if (square[i].innerHTML == "" && game_on == true) {
                     if (clickCount % 2 == 0) {
                         square[i].innerHTML = "X";
                     } else {
