@@ -107,17 +107,31 @@ footer{
     justify-content: space-around;
     align-items: center;
     gap: 10px;
+    position: relative;
 }
 
 .input-fields {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     background-color: rgb(230, 226, 226);
-    padding: 3px;
+    padding: 10px;
     width: 200px;
+    position: absolute;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+
+#new-player1-name,
+#new-player2-name {
+    margin-bottom: 5px;
+}
+
+#input-player1 {
+    margin-left: 90px;
+}
+
+#input-player2 {
+    margin-right: 90px;
 }
 
 .save-exit-btns {
@@ -156,6 +170,7 @@ input {
     justify-content: center;
     align-items: center;
     margin-top: 5px;
+    border: 1px solid rgb(173, 173, 173);
 }
 
 #player-container img {
