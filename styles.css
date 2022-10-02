@@ -20,7 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     width: min(100%, 500px);
-    height: min(100%, 500px);
+    height: min(100%, 525px);
     border: solid red;
     position: relative;
 }
@@ -34,8 +34,7 @@ main {
     border: solid green;
 }
 
-header,
-footer {
+header {
     font-size: 40px;
 }
 
@@ -78,3 +77,98 @@ footer {
     font-size: 100px;
     font-weight: bold;
 }
+
+footer{
+    width: 100%;
+    height: 15%;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+#button-container {
+    display: flex;
+    justify-content: center;
+}
+
+#restart {
+    width: 100px;
+    height: 30px;
+}
+
+#player-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.player-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: rgb(230, 226, 226);
+    padding: 3px;
+    width: 200px;
+}
+
+.save-exit-btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+input {
+    height: 30px;
+    width: 90%;
+}
+
+.input-btn {
+    background-color: white;
+    border: 1px solid gray;
+    width: 30px;
+    height: 30px;
+}
+
+.save-name {
+    color: green;
+}
+
+.exit-name {
+    color: red;
+}
+
+.edit-container {
+    height: 100%;
+}
+
+.edit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+#player-container img {
+    height: 15px;
+    width: 15px;
+    background-color: white;
+}
+
+.player-person {
+    display: flex;
+    flex-direction: row;
+    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+}
+

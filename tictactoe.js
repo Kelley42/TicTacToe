@@ -28,7 +28,33 @@ const gameBoard = (() => {
     const hideWinner = () => {
         winner_box.style.display = "none";
     };
+    const newPlayer1 = document.querySelector("#input-player1");
+    const newPlayer2 = document.querySelector("#input-player2");
+    const showInput1 = () => {
+        newPlayer1.style.display = "block";
+    };
+    const hideInput1 = () => {
+        newPlayer1.style.display = "none";
+    };
+    const showInput2 = () => {
+        newPlayer2.style.display = "block";
+    };
+    const hideInput2 = () => {
+        newPlayer2.style.display = "none";
+    };
+    const change_player1 = () => {
+        showInput1();
+    };
+    const change_player2 = () => {
+        showInput2();
+    };
+    const player1btn = document.querySelector("#player1btn");
+    player1btn.addEventListener("click", change_player1);
+    const player2btn = document.querySelector("#player2btn");
+    player2btn.addEventListener("click", change_player2);
     hideWinner;
+    hideInput1();
+    hideInput2();
     let game_on;
     let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
     let clickCount = 0;
@@ -118,7 +144,7 @@ const gameBoard = (() => {
             }
         }
     };
-    return {makeClickable, restartGame, showWinner, hideWinner};
+    return {makeClickable, restartGame, showWinner, hideWinner, showInput1, showInput2, hideInput1, hideInput2};
 })();
 
 // const gamePlay = (() => {
@@ -138,6 +164,8 @@ const gameContainer = document.querySelector("#game-container");
 const square = document.getElementsByClassName("square");
 const restart = document.querySelector("#restart");
 restart.addEventListener("click", gameBoard.restartGame);
+const playerSection = document.querySelector("#player-section");
+const playerPerson = document.getElementsByClassName("player-person");
 
 
 gameBoard.hideWinner();
