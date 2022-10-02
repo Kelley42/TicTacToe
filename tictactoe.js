@@ -19,7 +19,11 @@ const gameBoard = (() => {
     const winner_announcement = document.querySelector("#winner-announcement"); 
     const showWinner = () => {
         winner_box.style.display = "block";
-        winner_announcement.style.fontSize = `${480 / winner_announcement.innerHTML.length}px`;
+        if (winner_announcement.innerHTML.length > 3) {
+            winner_announcement.style.fontSize = `${480 / winner_announcement.innerHTML.length}px`;
+        } else {
+            winner_announcement.style.fontSize = "40px";
+        }
     };
     const hideWinner = () => {
         winner_box.style.display = "none";
@@ -27,8 +31,8 @@ const gameBoard = (() => {
     hideWinner;
     let game_on;
     let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
+    let clickCount = 0;
     const makeClickable = () => {
-        let clickCount = 0;
         const x_array = "XXX";
         const o_array = "OOO";
         // const boardArray = [];
@@ -93,8 +97,8 @@ const gameBoard = (() => {
                     
                 // }
                 if (clickCount == 9 && game_on == true) {
-                    winner_announcement.innerHTML = "tie";
-                    showWinner;
+                    winner_announcement.innerHTML = "Tie";
+                    showWinner();
                 }
             });
         }
@@ -103,6 +107,7 @@ const gameBoard = (() => {
         hideWinner();
         winner_announcement.innerHTML = "";
         game_on = true;
+        clickCount = 0;
         array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
         for (let i = 0; i < square.length; i++) {
             square[i].innerHTML = "";
