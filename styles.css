@@ -64,6 +64,27 @@ header {
     word-wrap: break-word;
     word-break: break-word;
     color: var(--fuchsia-color);
+    animation-name: spin, grow-big;
+    animation-duration: 2s, 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes grow-big {
+    from {
+        font-size: 0px;
+    }
+    to {
+        font-size: 30px;
+    }
 }
 
 #game-container {
