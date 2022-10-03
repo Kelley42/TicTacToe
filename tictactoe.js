@@ -80,7 +80,7 @@ const gameBoard = (() => {
     exitName1.addEventListener("click", exitPlayer1);
     const exitName2 = document.querySelector("#exit-player2");
     exitName2.addEventListener("click", exitPlayer2);
-    hideWinner;
+    hideWinner();
     hideInput1();
     hideInput2();
     player1name.innerHTML = player1.name;
@@ -189,6 +189,10 @@ const gameBoard = (() => {
 //     // return {endGame};
 // })();
 
+const gameController = (() => {
+
+})();
+
 
 const gameContainer = document.querySelector("#game-container");
 const square = document.getElementsByClassName("square");
@@ -198,7 +202,6 @@ const playerSection = document.querySelector("#player-section");
 const playerPerson = document.getElementsByClassName("player-person");
 
 
-gameBoard.hideWinner();
 gameBoard.makeClickable();
 // gamePlay.endGame();
 
