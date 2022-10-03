@@ -6,6 +6,7 @@
 :root {
     --teal-color: rgb(12, 152, 170);
     --fuchsia-color: #ca2c92;
+    --light-fuchsia: #f7cae6;
     --brown-color: #5f4539;
 }
 
@@ -127,17 +128,18 @@ footer{
 .input-fields {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    background-color: rgb(230, 226, 226);
+    background-color: var(--light-fuchsia);
     padding: 10px;
     width: 200px;
     position: absolute;
     margin-bottom: 20px;
     border: 1px solid black;
+    justify-content: center;
 }
 
-#new-player1-name,
-#new-player2-name {
+.input-names {
     margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 #input-player1 {
@@ -165,14 +167,16 @@ input {
     border: 1px solid gray;
     width: 30px;
     height: 30px;
+    font-weight: bold;
+    font-size: large;
 }
 
 .save-name {
-    color: green;
+    color: var(--teal-color);
 }
 
 .exit-name {
-    color: red;
+    color: var(--fuchsia-color);
 }
 
 .edit-container {
