@@ -7,6 +7,7 @@
     --teal-color: rgb(12, 152, 170);
     --fuchsia-color: #ca2c92;
     --light-fuchsia: #f7cae6;
+    --lightest-fuchsia: #f8e5f1;
     --brown-color: #5f4539;
 }
 
@@ -28,6 +29,7 @@ body {
     width: min(90%, 500px);
     height: min(100%, 525px);
     position: relative;
+    background-color: var(--lightest-fuchsia);
 }
 
 main {
@@ -82,6 +84,7 @@ header {
     font-size: 100px;
     font-weight: bold;
     color: var(--brown-color);
+    background-color: white;
 }
 
 footer{
