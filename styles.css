@@ -49,6 +49,7 @@ header {
     position: absolute;
     width: 60%;
     height: 60%;
+    margin-bottom: 30px;
 }
 
 #winner-announcement {
@@ -65,7 +66,7 @@ header {
     word-break: break-word;
     color: var(--fuchsia-color);
     animation-name: spin, grow-big;
-    animation-duration: 2s, 1s;
+    animation-duration: 2s, 1.8s;
     animation-iteration-count: 1;
 }
 
@@ -80,10 +81,12 @@ header {
 
 @keyframes grow-big {
     from {
+        /* font-size: 0px; */
         font-size: 0px;
     }
     to {
-        font-size: 30px;
+        /* font-size: 30px; */
+        font-size: scale(1);
     }
 }
 

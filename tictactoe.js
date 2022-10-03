@@ -45,9 +45,9 @@ const gameBoard = (() => {
             square[i].addEventListener("click", () => {
                 if (square[i].innerHTML == "" && game_on == true) {
                     if (clickCount % 2 == 0) {
-                        square[i].innerHTML = "X";
+                        square[i].innerHTML = player1.marker;
                     } else {
-                        square[i].innerHTML = "O";
+                        square[i].innerHTML = player2.marker;
                     }
                     clickCount += 1;
                     // Push square id and either X or O to boardArray
