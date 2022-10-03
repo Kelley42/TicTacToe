@@ -3,6 +3,12 @@
     margin: 0;
 }
 
+:root {
+    --teal-color: rgb(12, 152, 170);
+    --fuchsia-color: #ca2c92;
+    --brown-color: #5f4539;
+}
+
 html {
     width: 100%;
     height: 100%;
@@ -11,7 +17,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid green;
 }
 
 body {
@@ -19,9 +24,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: min(100%, 500px);
+    width: min(90%, 500px);
     height: min(100%, 525px);
-    border: solid red;
     position: relative;
 }
 
@@ -31,11 +35,11 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid green;
 }
 
 header {
     font-size: 40px;
+    color: var(--teal-color);
 }
 
 #winner-box {
@@ -47,7 +51,7 @@ header {
 #winner-announcement {
     position: absolute;
     background-color: white;
-    border: solid black;
+    border: solid var(--fuchsia-color);
     width: 100%;
     height: 100%;
     display: flex;
@@ -56,6 +60,7 @@ header {
     flex-wrap: wrap;
     word-wrap: break-word;
     word-break: break-word;
+    color: var(--fuchsia-color);
 }
 
 #game-container {
@@ -66,16 +71,16 @@ header {
     height: 100%;
     gap: 2px;
     box-sizing: border-box;
-    border: 5px solid orange;
 }
 
 .square {
-    outline: 2px solid black;
+    outline: 2px solid var(--brown-color);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 100px;
     font-weight: bold;
+    color: var(--brown-color);
 }
 
 footer{
@@ -83,6 +88,7 @@ footer{
     height: 15%;
     display: grid;
     grid-template-rows: 1fr 2fr;
+    color: var(--teal-color);
 }
 #button-container {
     display: flex;
@@ -92,6 +98,14 @@ footer{
 #restart {
     width: 100px;
     height: 30px;
+    margin-top: 10px;
+    border: none;
+    background-color: var(--teal-color);
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: 2px 2px black;
+
 }
 
 #player-container {
