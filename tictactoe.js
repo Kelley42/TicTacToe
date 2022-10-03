@@ -28,63 +28,7 @@ const gameBoard = (() => {
     const hideWinner = () => {
         winner_box.style.display = "none";
     };
-    const newPlayer1 = document.querySelector("#input-player1");
-    const newPlayer1input = document.querySelector("#new-player1-name");
-    const newPlayer2 = document.querySelector("#input-player2");
-    const newPlayer2input = document.querySelector("#new-player2-name");
-    const player1name = document.querySelector("#player1name");
-    const player2name = document.querySelector("#player2name");
-    const showInput1 = () => {
-        newPlayer1.style.display = "block";
-    };
-    const hideInput1 = () => {
-        newPlayer1.style.display = "none";
-    };
-    const showInput2 = () => {
-        newPlayer2.style.display = "block";
-    };
-    const hideInput2 = () => {
-        newPlayer2.style.display = "none";
-    };
-    const change_player1 = () => {
-        showInput1();
-    };
-    const change_player2 = () => {
-        showInput2();
-    };
-    const savePlayer1 = () => {
-        player1.name = newPlayer1input.value;
-        player1name.innerHTML = player1.name;
-        hideInput1();
-    };
-    const savePlayer2 = () => {
-        player2.name = newPlayer2input.value;
-        player2name.innerHTML = player2.name;
-        hideInput2();
-    };
-    const exitPlayer1 = () => {
-        hideInput1();
-    };
-    const exitPlayer2 = () => {
-        hideInput2();
-    };
-    const player1btn = document.querySelector("#player1btn");
-    player1btn.addEventListener("click", change_player1);
-    const player2btn = document.querySelector("#player2btn");
-    player2btn.addEventListener("click", change_player2);
-    const saveName1 = document.querySelector("#save-player1");
-    saveName1.addEventListener("click", savePlayer1);
-    const saveName2 = document.querySelector("#save-player2");
-    saveName2.addEventListener("click", savePlayer2);
-    const exitName1 = document.querySelector("#exit-player1");
-    exitName1.addEventListener("click", exitPlayer1);
-    const exitName2 = document.querySelector("#exit-player2");
-    exitName2.addEventListener("click", exitPlayer2);
     hideWinner();
-    hideInput1();
-    hideInput2();
-    player1name.innerHTML = player1.name;
-    player2name.innerHTML = player2.name;
     let game_on;
     let array_change = [["012"], ["345"], ["678"], ["036"], ["147"], ["258"], ["048"], ["246"]];
     let clickCount = 0;
@@ -174,7 +118,7 @@ const gameBoard = (() => {
             }
         }
     };
-    return {makeClickable, restartGame, showWinner, hideWinner, showInput1, showInput2, hideInput1, hideInput2};
+    return {makeClickable, restartGame, showWinner, hideWinner};
 })();
 
 // const gamePlay = (() => {
@@ -190,7 +134,48 @@ const gameBoard = (() => {
 // })();
 
 const gameController = (() => {
+    const newPlayer1 = document.querySelector("#input-player1");
+    const newPlayer1input = document.querySelector("#new-player1-name");
+    const newPlayer2 = document.querySelector("#input-player2");
+    const newPlayer2input = document.querySelector("#new-player2-name");
+    const player1name = document.querySelector("#player1name");
+    const player2name = document.querySelector("#player2name");
 
+    const hideInput1 = () => {
+        newPlayer1.style.display = "none";
+    };
+    const hideInput2 = () => {
+        newPlayer2.style.display = "none";
+    };
+    const player1btn = document.querySelector("#player1btn");
+    player1btn.addEventListener("click", () => {
+        newPlayer1.style.display = "block";
+    });
+    const player2btn = document.querySelector("#player2btn");
+    player2btn.addEventListener("click", () => {
+        newPlayer2.style.display = "block";
+    });
+    const saveName1 = document.querySelector("#save-player1");
+    saveName1.addEventListener("click", () => {
+        player1.name = newPlayer1input.value;
+        player1name.innerHTML = player1.name;
+        hideInput1();
+    });
+    const saveName2 = document.querySelector("#save-player2");
+    saveName2.addEventListener("click", () => {
+        player2.name = newPlayer2input.value;
+        player2name.innerHTML = player2.name;
+        hideInput2();
+    });
+    const exitName1 = document.querySelector("#exit-player1");
+    exitName1.addEventListener("click", hideInput1);
+    const exitName2 = document.querySelector("#exit-player2");
+    exitName2.addEventListener("click", hideInput2);
+    hideInput1();
+    hideInput2();
+    player1name.innerHTML = player1.name;
+    player2name.innerHTML = player2.name;
+    return {hideInput1, hideInput2};
 })();
 
 
